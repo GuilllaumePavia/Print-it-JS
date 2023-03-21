@@ -43,8 +43,8 @@ console.log(paragraphe)
 const selectedDot = [...document.querySelectorAll('.dot')]; //Un tableau avec les points
 console.log(selectedDot)
 
-banner.src = "./assets/images/slideshow/" + slides[imageIndice]["image"];//+ slides[imageIndice]
-paragraphe.innerHTML = slides[imageIndice]["tagLine"];                   // On part de 0 et on change l'image
+banner.src = "./assets/images/slideshow/" + slides[imageIndice].image;//+ slides[imageIndice]
+paragraphe.innerHTML = slides[imageIndice].tagLine;                   // On part de 0 et on change l'image
 //On part de 0 et on change le texte
 
  
@@ -57,9 +57,9 @@ flecheG.addEventListener('click', function () {//Au click il y a une fonction
     if (imageIndice < 0) {//C'est pour que ça fasse le tour (0 = début) et (n-1 = fin)
         imageIndice = n - 1;
     }
-    banner.src = "./assets/images/slideshow/" + slides[imageIndice]["image"];//C'est pour changer d'image
-    paragraphe.innerHTML = slides[imageIndice]["tagLine"];//C'est pour changer le texte
-	whitePoint()
+    banner.src = "./assets/images/slideshow/" + slides[imageIndice].image;//C'est pour changer d'image
+    paragraphe.innerHTML = slides[imageIndice].tagLine;//C'est pour changer le texte
+	updateDots();
 });
 
 flecheD.addEventListener('click', function () {
@@ -68,13 +68,13 @@ flecheD.addEventListener('click', function () {
         imageIndice = 0;
     
     }
-    banner.src = "./assets/images/slideshow/" + slides[imageIndice]["image"];
-    paragraphe.innerHTML = slides[imageIndice]["tagLine"];
-	whitePoint()	
+    banner.src = "./assets/images/slideshow/" + slides[imageIndice].image;
+    paragraphe.innerHTML = slides[imageIndice].tagLine;
+	updateDots();	
 });
 
 
-function whitePoint() {
+function updateDots() {
 	for(let i = 0; i < n; i++ ) {
 		if(i === imageIndice){
 			selectedDot[i].classList.add("dot_selected");
@@ -82,5 +82,7 @@ function whitePoint() {
 		else {
 			selectedDot[i].classList.remove("dot_selected");
 		}
-	   }
+	}
 }
+
+updateDots();
